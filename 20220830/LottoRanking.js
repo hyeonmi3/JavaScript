@@ -1,8 +1,5 @@
-// 프로그래머스 1단계
-// 로또 최고 순위와 최저 순위
-
 function solution(lottos, win_nums) {
-    var answer = [];
+    let answer = [];
     
     const correct = lottos.filter(lotto => win_nums.includes(lotto)).length;
     
