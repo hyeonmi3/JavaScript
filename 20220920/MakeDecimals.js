@@ -1,20 +1,13 @@
-function solution(nums) {
-    let answer = 0;
-    const len = nums.length;
+function solution(sizes) {
+    let arr = sizes.map(size => size[0] > size[1] ? [size[0], size[1]] : [size[1], size[0]]);
 
-    for (let i = 0; i < len; i++) {
-        for (let j = i + 1; j < len; j++) {
-            for (let k = j + 1; k < len; k++) {
-                const sum = nums[i] + nums[j] + nums[k];
-                if (isPrime(sum)) answer++;
-            }
-        }
+    const width = [];
+    const height = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        width.push(arr[i][0]);
+        height.push(arr[i][1]);
     }
-    return answer;
-}
 
-function isPrime(sum) {
-    for (let i = 2; i < sum; i++)
-        if (sum % i === 0) return false;
-    return sum > 1;
+    return Math.max(...width) * Math.max(...height);
 }
